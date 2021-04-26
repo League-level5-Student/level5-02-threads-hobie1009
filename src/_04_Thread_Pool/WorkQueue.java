@@ -44,9 +44,9 @@ public class WorkQueue implements Runnable {
 
 	public void addJob(Job j) {
 		synchronized (jobQueue) {
+			jobQueue.add(j);
+			jobQueue.notify();
 		}
-		jobQueue.add(j);
-		jobQueue.notify();
 	}
 
 	public boolean performJob() {
